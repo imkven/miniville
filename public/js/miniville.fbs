@@ -1,0 +1,7 @@
+namespace MiniVille.Dumb;
+
+table Notes {
+  content:string;
+}
+
+root_type Notes;

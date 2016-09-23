@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  P
+    | Hello World
+
+  script.
+    $( document ).ready(function() {
+      $.ajax({
+        url: "http://localhost:3000/flatbuffers/test"
+      })
+      .done(function (buff) {
+
+        //var data = new Uint8Array(buff);
+        //var data = buff;
+
+        console.log(buff);
+
+        //var arr = new Uint8Array(buff);
+        var buf = new flatbuffers.ByteBuffer(buff);
+        console.log(buf);
+
+        var b = MiniVille.Dumb.Notes.getRootAsNotes(buf);
+        console.log(b);
+        console.log(b.content());
+      });
+    });
